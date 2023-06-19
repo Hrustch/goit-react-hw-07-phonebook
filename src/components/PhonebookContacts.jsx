@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, fetchContacts } from 'redux/contactsOperations';
+import { deleteContact } from 'redux/contactsOperations';
 
 
 export const PhonebookContacts = () => {
