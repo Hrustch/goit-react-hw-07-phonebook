@@ -1,13 +1,19 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import { Section } from './Section';
 import { PhonebookForm } from './PhonebookForm';
 import { PhonebookContacts } from './PhonebookContacts';
 import { PhonebookFilter } from './PhonebookFilter';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/contactsOperations';
 
 const App = () => {
   const { contacts } = useSelector(state => state);
+  const dispatch = useDispatch()
+  
+  useEffect(()=>{
+    console.log()
+    dispatch(fetchContacts())
+  },[dispatch])
 
   return (
     <div>
@@ -15,7 +21,7 @@ const App = () => {
         <PhonebookForm />
       </Section>
       <Section title="Contacts">
-        {contacts.length > 0 ? (
+        {contacts?.length > 0 ? (
           <>
             <PhonebookFilter />
             <PhonebookContacts />{' '}
